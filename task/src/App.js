@@ -1,4 +1,3 @@
-
 import './App.css';
 import {useState, useEffect} from "react";
 import {BsTrash, BsBookmarkCheck, BsBookmarkCheckFill} from "react-icons/bs";
@@ -6,65 +5,34 @@ import {BsTrash, BsBookmarkCheck, BsBookmarkCheckFill} from "react-icons/bs";
 const API = "https://localhost:5000"
 
 function App() {
-    const [title, setTitle] = useState("")
-    const [time, setTime] = useState ("")
-    const [todos, setTodos] = useState ([]);
-    const [loading, setLoading] = useState (false);
+  const [title, setTitle] = useState("")
+  const [time, setTime] = useState ("")
+  const [todos, setTodos] = useState ([]);
+  const [loading, setLoading] = useState (false);
 
-    // load todos on page load
 
-    useEffect(() => {
-      const loadData = async () => {
-      setLoading(true);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-      const res = await fetch(API+ "/todos")
-      .then((res) => res.json())
-      .then((data) => data)
-      .catch ((err) => console.log(err));  
-
-    setLoading(false)
-
-    setTodos(res)
-
-    loadData();
-    };
-  }, []);
-
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-
-      const todo = {
-        id: Math.random(),
-        title,
-        time,
-        done: false, 
-      };
-
-     await fetch(API + "/todos", {
-      method: "POST", 
-      body: JSON.stringify(todo),                                        
-      headers: { 
-        "content-type": "application/json",
-      },
-     });
-
-      setTodos ((prevState) => [...prevState,todo]);
- 
-      setTitle("");
-      setTime("");
+    const todo = {
+      id: Math.random(),
+      title,
+      time,
+      done: false, 
     };
 
-      const handleDelete = async (id) => {
+    setTodos ((prevState) => [...prevState,todo]);
+    setTitle("");
+    setTime("");
+  };
 
-        await fetch(API + "/todos/" + id, {
-          method: "DELETE"
-         });
+  const handleDelete = async (id) => {
+    setTodos ((prevState) => prevState.filter ((todo) => todo.id !==id));
+  }
 
-         setTodos ((prevState) => prevState.filter ((todo) => todo.id !==id));
-      }
-    if(loading) {
-      return <p>Carregando...</p>
-    }
+  if (loading) {
+    return <p>Carregando...</p>
+  }
 
   return (
     <div className='App'>
@@ -114,6 +82,6 @@ function App() {
       </div>
     </div>
   );
-  }
+}
 
 export default App;
