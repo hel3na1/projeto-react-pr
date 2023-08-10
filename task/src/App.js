@@ -54,7 +54,7 @@ function App() {
       done: false, 
     };
 
-    Create({name, duration})
+    // Create({name, duration})
 
     setTodos ((prevState) => [...prevState,todo]);
     setName("");
@@ -62,26 +62,26 @@ function App() {
   };
 
   const handleDelete = async (id) => {
-    Delete(id)
+    // Delete(id)
     setTodos((prevState) => prevState.filter ((todo) => todo.id !==id));
   }
 
   useEffect(() => {
-    loadData()
+    // loadData()
   }, [])
 
   return (
     <div className='App'>
       <div className='todo-header'>
-          <h1>React task</h1>
+          <h1>MINHAS TAREFAS SEMANAIS</h1>
       </div>
 
       <div className='form-todo'>
-        <h2>Insira a sua próxima tarefa:</h2>
+        <h2>ATIVIDADES:</h2>
         <form onSubmit={handleSubmit}>
 
           <div className='form-control'>
-            <label htmlFor='title'>O que você vai fazer?</label>
+            <label htmlFor='title'>O QUE VOCÊ VAI FAZER:</label>
             <input type='text' name='title' placeholder='Título da tarefa' onChange={(e) => setName(e.target.value)}
             value={name || ""}
             required
@@ -89,7 +89,7 @@ function App() {
             </div>
 
             <div className='form-control'>
-            <label htmlFor='time'>Duração:</label>
+            <label htmlFor='time'>DURAÇÃO:</label>
             <input type='text' name='title' placeholder='Tempo estimado (em horas)' onChange={(e) => setDuration(e.target.value)}
             value={duration || ""}
             required
@@ -97,7 +97,7 @@ function App() {
             </div>
 
 
-          <input type='submit' value={'Criar tarefa'}></input>
+          <input type='submit' value={'CRIAR TAREFA'}></input>
         </form>
       </div>
 

@@ -1,19 +1,37 @@
 .App {
-  width: 40%;
+  width: 100%;
   margin: 2em auto;
-  background-color:#394049;
-  border-radius: 5px;
-  color: #fff;
-}
+  border-radius: 1px;
+  color: rgb(64, 31, 31);
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #efcece, #7295e6); 
+  box-shadow: 10px 20px grey;
+  }
 
 .topo-header {
-  padding: 0.5em;
-  border-bottom: 1px solid #2c3035 ;
+  padding: 1%;
+  border-bottom: 1px solid #0d0d0e ;
   text-align: center;
+  margin: auto;
+
 }
 
-.topo-header h1{
-  margin: 0;
+.todo-header h1{
+  font-size: 36px;
+  color: #270606;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: text-decoration-color 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+  margin: 2em;  
+  font-family:Georgia,"Times New Roman",Times,serif;; 
+}
+
+.App h2 {
+  color: aqua;
 }
 
 .form-todo {
@@ -26,6 +44,7 @@
 .list-todo h2 {
   text-align: center;
   margin-top: 0;
+  color: #08203e;
 }
 
 .form-control {
@@ -36,28 +55,43 @@
 
 .form-control label {
   font-weight: bold;
-  font-size: .7em;
+  font-size: 15px;
   margin-bottom: .4em;
 }
 
 .form-control input {
-  border: 1px solid #222;
   border-radius: 2px;
-  background-color: #2c3035;
+  background-color: rgb(236, 215, 219);
   padding: 0.5em;
-  color: #dfdfdf;
+  color: black;
+  border: none;
+  border-radius: 15px;
+  font-size: 18px;
+  font-family: 'Montserrat', sans-serif;
 }
 
+
 input[type="submit"] {
-  background-color: #333;
-  color: #eee;
-  display: block;
-  width: 100%;
-  border: 1px solid #222;
+  padding: 10px 20px;
+  background-color: #74abe7;
+  color: white;
+  border: none;
   border-radius: 5px;
-  padding: 1em;
+  font-size: 16px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 20px auto;
+  padding: 10px;
+  display: block;
 }
+
+
+input[type="submit"]:hover {
+  color: #fff;
+  background-color: #f97693;
+};
+ 
+
 
 .list-todo {
   padding: 0 1em 2em;
@@ -73,7 +107,7 @@ input[type="submit"] {
 }
 
 .todo {
-  border-bottom: 1px solid #444;
+  border-bottom: 1px soli#444;
   padding: 1em 0;
 }
 
@@ -83,7 +117,7 @@ input[type="submit"] {
 
 .todo-done {
   text-decoration: line-through;
-  color: rgb(240, 98, 146);
+  color: rgb(105, 240, 98);
 }
 
 .todo p {
@@ -101,5 +135,5 @@ input[type="submit"] {
 }
 
 .todo svg:hover {
-  color:rgb(240, 98, 146)
+  color:rgb(1, 22, 3)
 }

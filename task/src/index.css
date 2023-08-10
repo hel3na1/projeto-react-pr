@@ -1,6 +1,12 @@
 html {
-  background: #780206;
-  
-  background: #061161 ;
+  width: 100%;
 }
 
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background: linear-gradient(to right, #84ffc9, #aab2ff, #eca0ff);
+}
