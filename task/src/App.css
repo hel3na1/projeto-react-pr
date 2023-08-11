@@ -6,19 +6,18 @@
   flex-direction: column;
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #efcece, #7295e6); 
+  background: linear-gradient(135deg, #efcece, #7295e6);
   box-shadow: 10px 20px grey;
-  }
+}
 
 .topo-header {
   padding: 1%;
-  border-bottom: 1px solid #0d0d0e ;
+  border-bottom: 1px solid #0d0d0e;
   text-align: center;
   margin: auto;
-
 }
 
-.todo-header h1{
+.todo-header h1 {
   font-size: 36px;
   color: #270606;
   padding: 10px 20px;
@@ -26,8 +25,8 @@
   transition: text-decoration-color 0.3s;
   cursor: pointer;
   text-decoration: none;
-  margin: 2em;  
-  font-family:Georgia,"Times New Roman",Times,serif;; 
+  margin: 2em;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 .App h2 {
@@ -37,7 +36,7 @@
 .form-todo {
   padding: 1em;
   margin: 0 2em;
-  border-bottom: 1px solid #2c3035
+  border-bottom: 1px solid #2c3035;
 }
 
 .form-todo h2,
@@ -48,15 +47,15 @@
 }
 
 .form-control {
-  display:flex;
-  flex-direction:column;
+  display: flex;
+  flex-direction: column;
   margin-bottom: 1em;
 }
 
 .form-control label {
   font-weight: bold;
   font-size: 15px;
-  margin-bottom: .4em;
+  margin-bottom: 0.4em;
 }
 
 .form-control input {
@@ -70,7 +69,6 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-
 input[type="submit"] {
   padding: 10px 20px;
   background-color: #74abe7;
@@ -81,20 +79,16 @@ input[type="submit"] {
   cursor: pointer;
   transition: background-color 0.3s ease;
   margin: 20px auto;
-  padding: 10px;
   display: block;
 }
-
 
 input[type="submit"]:hover {
   color: #fff;
   background-color: #f97693;
-};
- 
-
+}
 
 .list-todo {
-  padding: 0 1em 2em;
+  padding: 1em 1em 2em;
   margin: 1em 2em;
 }
 
@@ -107,12 +101,12 @@ input[type="submit"]:hover {
 }
 
 .todo {
-  border-bottom: 1px soli#444;
+  border-bottom: 1px solid #444;
   padding: 1em 0;
 }
 
 .todo h3 {
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
 }
 
 .todo-done {
@@ -123,7 +117,7 @@ input[type="submit"]:hover {
 .todo p {
   text-align: left;
   font-style: italic;
-  font-size: .7em;
+  font-size: 0.7em;
   margin-bottom: 1.5em;
 }
 
@@ -131,9 +125,20 @@ input[type="submit"]:hover {
   font-size: 1.2em;
   cursor: pointer;
   margin-right: 1em;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .todo svg:hover {
-  color:rgb(1, 22, 3)
+  color: rgb(1, 22, 3);
+}
+
+
+@media (max-width: 768px) {
+  .App {
+    margin: 1em auto;
+  }
+
+  .form-todo {
+    margin: 0 1em; 
+  }
 }
