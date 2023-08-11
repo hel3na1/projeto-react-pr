@@ -1,4 +1,4 @@
-  import './App.css';
+import './App.css';
 import {useState, useEffect} from "react";
 import {BsTrash, BsBookmarkCheck, BsBookmarkCheckFill} from "react-icons/bs";
 import { api } from './api/api';
@@ -24,10 +24,7 @@ function App() {
 
   async function Delete(id) {
     try {
-      console.log(id) 
-      const response = await api.delete(`object/delete/${id}`);
-
-      console.log (response.data)
+      await api.delete(`object/delete/${id}`);
     } catch (error) {
       console.error('Erro:', error);
       throw new Error('Erro na requisição');
@@ -38,7 +35,7 @@ function App() {
     try {
       const response = await api.post("object/create", data);      
 
-      console.log(response.data)
+      return response.data
     } catch (error) {
       console.error('Erro:', error);
       throw new Error('Erro na requisição');
@@ -47,19 +44,20 @@ function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const resTodo = await Create({nome, duracao})
 
-    const todo = {
-      id: Math.random(),
-      nome,
-      duracao,
-      done: false, 
-    };
-
-    Create({nome, duracao})
-
-    setTodos ((prevState) => [...prevState,todo]);
-    setName("");
-    setDuration("");
+    if (resTodo) {
+      const todo = {
+        id: resTodo.id,
+        nome,
+        duracao,
+        done: false, 
+      };
+  
+      setTodos ((prevState) => [...prevState,todo]);
+      setName("");
+      setDuration("");
+    }
   };
 
   const handleDelete = async (id) => {
