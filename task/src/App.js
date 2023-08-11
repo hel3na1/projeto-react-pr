@@ -1,19 +1,19 @@
-import './App.css';
+  import './App.css';
 import {useState, useEffect} from "react";
 import {BsTrash, BsBookmarkCheck, BsBookmarkCheckFill} from "react-icons/bs";
 import { api } from './api/api';
 
-const API = "https://localhost:5000"
+const API = "http://teste-api-node-production.up.railway.app/"
 
 function App() {
-  const [name, setName] = useState("")
-  const [duration, setDuration] = useState ("")
+  const [nome, setName] = useState("")
+  const [duracao, setDuration] = useState ("")
   const [todos, setTodos] = useState ([]);
   const [loading, setLoading] = useState (false);
 
   async function loadData() {
     try {
-      const response = await api.get();    
+      const response = await api.get("object/showall");      ;    
       setTodos(response.data)
     } catch (error) {
       console.error('Erro:', error);
@@ -24,9 +24,10 @@ function App() {
 
   async function Delete(id) {
     try {
-      const response = await api.delete(`${id}`);
+      console.log(id) 
+      const response = await api.delete(`object/delete/${id}`);
 
-      console.log(response.data)
+      console.log (response.data)
     } catch (error) {
       console.error('Erro:', error);
       throw new Error('Erro na requisição');
@@ -35,7 +36,7 @@ function App() {
 
   async function Create(data) {
     try {
-      const response = await api.post("", data);      
+      const response = await api.post("object/create", data);      
 
       console.log(response.data)
     } catch (error) {
@@ -49,12 +50,12 @@ function App() {
 
     const todo = {
       id: Math.random(),
-      name,
-      duration,
+      nome,
+      duracao,
       done: false, 
     };
 
-    // Create({name, duration})
+    Create({nome, duracao})
 
     setTodos ((prevState) => [...prevState,todo]);
     setName("");
@@ -62,13 +63,13 @@ function App() {
   };
 
   const handleDelete = async (id) => {
-    // Delete(id)
+    Delete(id)
     setTodos((prevState) => prevState.filter ((todo) => todo.id !==id));
   }
 
   useEffect(() => {
-    // loadData()
-  }, [])
+    loadData()
+  }, [])  
 
   return (
     <div className='App'>
@@ -83,7 +84,7 @@ function App() {
           <div className='form-control'>
             <label htmlFor='title'>O QUE VOCÊ VAI FAZER:</label>
             <input type='text' name='title' placeholder='Título da tarefa' onChange={(e) => setName(e.target.value)}
-            value={name || ""}
+            value={nome || ""}
             required
           ></input>
             </div>
@@ -91,7 +92,7 @@ function App() {
             <div className='form-control'>
             <label htmlFor='time'>DURAÇÃO:</label>
             <input type='text' name='title' placeholder='Tempo estimado (em horas)' onChange={(e) => setDuration(e.target.value)}
-            value={duration || ""}
+            value={duracao || ""}
             required
           ></input>
             </div>
@@ -106,8 +107,8 @@ function App() {
       {todos.length === 0 && <p>Não há tarefas!</p>}
       {todos.map((todo) => (
         <div className='todo' key={todo.id}>
-          <h3 className={todo.done ? "todo-done": ""}>{todo.name}</h3>
-          <p>Duração {todo.duration}</p>
+          <h3 className={todo.done ? "todo-done": ""}>{todo.nome}</h3>
+          <p>Duração {todo.duracao}</p>
           <div className='actions'></div>
           <span>
             {!todo.done ? <BsBookmarkCheck/> : <BsBookmarkCheckFill />}
